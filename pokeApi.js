@@ -341,6 +341,30 @@ const answerBox = () => {
     };
 }
 
+// getPokeDataTCG();
+
+const getRandomPokemon = async () => {
+    const imageLinks = [];
+
+    const x = await getPokeDataTCG();
+    // console.log(x);
+    // get 1 random pokemon. 
+    
+    let randomIndex = Math.floor(Math.random() * x.data.length)
+    console.log(randomIndex);
+    
+    // getRandomIndex();
+
+    let pokemon = x.data[randomIndex];
+        // console.log(pokemon);
+           
+    const pokemonImage1 = pokemon.images.small;
+    imageLinks.push(pokemonImage1);
+    // console.log(pokemonImage1);
+
+    console.log(imageLinks);
+    return imageLinks
+
 const createTest = () => {
     scrapeImg();
     structureQuestion();
@@ -360,11 +384,39 @@ function handleKeypress (e) {
     pos += 1;
     focusElement();
 }
-get3RandomPokemon();
+getRandomPokemon();
 
-// const add3RandomPokemon = async () => {
-//     const x = await get3RandomPokemon();
-//     console.log(x);
+
+
+const add3RandomPokemon = async () => {
+    const addRandomPokemon1 = async () => {
+        const x = await getRandomPokemon();
+        console.log(x);
+    
+        const poke1 = document.getElementById("m-c-image");
+        poke1.src = x[0];
+    }
+    addRandomPokemon1();
+    
+    const addRandomPokemon2 = async () => {
+        const x = await getRandomPokemon();
+        console.log(x);
+    
+        const poke1 = document.getElementById("m-v-image1");
+        poke1.src = x[0];
+    }
+    addRandomPokemon2();
+    
+    const addRandomPokemon3 = async () => {
+        const x = await getRandomPokemon();
+        console.log(x);
+    
+        const poke1 = document.getElementById("m-v-image2");
+        poke1.src = x[0];
+    }
+    addRandomPokemon3();
+}
+add3RandomPokemon();
 
 //create html and js functions for populating info on currently legal cards based on loaded pokemon and the best cards based on popularity/price
 

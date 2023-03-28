@@ -24,6 +24,11 @@ button {
     height: 50px;
 }
 
+
+.m-c-image,
+.m-v-image1,
+.m-v-image2 {
+
 .user-input {
     display: flex;
 }
