@@ -5,6 +5,9 @@ const question = document.getElementById('question');
 const hintBox = document.getElementById('hint-box');
 const userInput = document.getElementById('user-input');
 const placeholder = document.getElementById('placeholder');
+const instructionsDiv = document.getElementById('instructionsDiv');
+const instructionsButton = document.getElementById('instructionsButton');
+const instructionsPar = document.getElementById('instructionsPar');
 
 let pokeArray = [];
 let pos = 0;
@@ -115,7 +118,6 @@ function handleKeypress (e) {
     pos += 1;
     focusElement();
 }
-getRandomPokemon();
 
 
 
@@ -154,3 +156,28 @@ add3RandomPokemon();
 testBtn2.addEventListener('click', gatherPoke);
 testBtn.addEventListener('click', createTest);
 userInput.addEventListener('keypress', handleKeypress);
+instructionsButton.addEventListener('click', () => {
+    if (instructionsPar.style.display === 'none') {
+      instructionsPar.style.display = 'block';
+      instructionsButton.textContent = 'Instructions';
+    } else {
+      instructionsPar.style.display = 'none';
+      instructionsButton.textContent = 'Instructions';
+    }
+  });
+
+
+const instructions = () => {
+    const instructionsDiv = document.getElementById('instructionsDiv');
+    const instructionsButton = document.getElementById('instructionsButton');
+    const instructionsPar = document.getElementById('instructionsPar');
+    instructionsButton.addEventListener('click', () => {
+      if (instructionsPar.style.display === 'none') {
+        instructionsPar.style.display = 'block';
+        instructionsButton.textContent = 'Instructions';
+      } else {
+        instructionsPar.style.display = 'none';
+        instructionsButton.textContent = 'Instructions';
+      }
+    });
+  }
