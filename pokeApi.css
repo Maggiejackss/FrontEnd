@@ -24,8 +24,18 @@ button {
     height: 50px;
 }
 
+
 .m-c-image,
 .m-v-image1,
 .m-v-image2 {
+
+.user-input {
+    display: flex;
+}
+
+.letterBox {
+    width: 20px;
+}
+.m-c-image {
     height: 15rem;
 }
