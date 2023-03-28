@@ -308,42 +308,57 @@ const getPokeDataTCG = async () => {
 }
 // getPokeDataTCG();
 
-const get3RandomPokemon = async () => {
+const getRandomPokemon = async () => {
     const imageLinks = [];
 
     const x = await getPokeDataTCG();
     // console.log(x);
     // get 1 random pokemon. 
     
-    function getRandomIndex() {
-        let randomIndex = Math.floor(Math.random() * x.data.length)
-        console.log(randomIndex);
-        return randomIndex;
-    }
+    let randomIndex = Math.floor(Math.random() * x.data.length)
+    console.log(randomIndex);
+    
     // getRandomIndex();
 
-    let pokemon = x.data[getRandomIndex()];
+    let pokemon = x.data[randomIndex];
         // console.log(pokemon);
            
     const pokemonImage1 = pokemon.images.small;
     imageLinks.push(pokemonImage1);
     // console.log(pokemonImage1);
-        
-    x.data[getRandomIndex()];   
-    const pokemonImage2 = pokemon.images.small;
-    imageLinks.push(pokemonImage2);
-    
 
     console.log(imageLinks);
     return imageLinks
 }
-get3RandomPokemon();
+getRandomPokemon();
 
-// const add3RandomPokemon = async () => {
-//     const x = await get3RandomPokemon();
-//     console.log(x);
 
-//     const poke1 = document.getElementById("m-c-image");
-//     poke1.src = x[0];
-// }
-// add3RandomPokemon();
+const add3RandomPokemon = async () => {
+    const addRandomPokemon1 = async () => {
+        const x = await getRandomPokemon();
+        console.log(x);
+    
+        const poke1 = document.getElementById("m-c-image");
+        poke1.src = x[0];
+    }
+    addRandomPokemon1();
+    
+    const addRandomPokemon2 = async () => {
+        const x = await getRandomPokemon();
+        console.log(x);
+    
+        const poke1 = document.getElementById("m-v-image1");
+        poke1.src = x[0];
+    }
+    addRandomPokemon2();
+    
+    const addRandomPokemon3 = async () => {
+        const x = await getRandomPokemon();
+        console.log(x);
+    
+        const poke1 = document.getElementById("m-v-image2");
+        poke1.src = x[0];
+    }
+    addRandomPokemon3();
+}
+add3RandomPokemon();
