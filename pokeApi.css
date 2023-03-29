@@ -32,7 +32,9 @@ button {
 
 .m-c-image,
 .m-v-image1,
-.m-v-image2 {}
+.m-v-image2 {
+    height: 15rem;
+}
 
 .user-input {
     display: flex;
@@ -40,9 +42,6 @@ button {
 
 .letterBox {
     width: 20px;
-}
-.m-c-image {
-    height: 15rem;
 }
 
 .instructionsButton {
