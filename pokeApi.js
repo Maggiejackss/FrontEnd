@@ -4,13 +4,12 @@ const img = document.getElementById('fetched-image');
 const question = document.getElementById('question');
 const hintBox = document.getElementById('hint-box');
 const userInput = document.getElementById('user-input');
-const placeholder = document.getElementById('placeholder');
 const instructionsDiv = document.getElementById('instructionsDiv');
 const instructionsButton = document.getElementById('instructionsButton');
 const instructionsPar = document.getElementById('instructionsPar');
 
 let pokeArray = [];
-let pos = 0;
+let pos = 1;
 
 
 
@@ -53,10 +52,9 @@ const hintBoxStructure = () => {
 
 const answerBox = () => {
     const pokeName = pokeArray[0][0];
-    for (let i = 0; i < pokeName.length; i++) {
+    for (let i = 1; i <= pokeName.length; i++) {
         const letterInput = document.createElement('input');
         const inputCont = document.createElement('div');
-        placeholder.removeAttribute('data-position', '0');
         inputCont.className = 'letterBox';
         letterInput.setAttribute('data-position', `${i}`);
         letterInput.maxLength = 1;
@@ -106,18 +104,57 @@ const createTest = () => {
     answerBox();
 }
 
-const focusElement = () => {
+const focusElement = (isFocus = true) => {
     const el = userInput.querySelector(`[data-position="${pos}"]`);
-    console.log(el);
-    window.setTimeout(() => el.focus(), 0);
+    if (isFocus) {
+        window.setTimeout(() => el.focus(), 0);  //TODO see if we can remove this
+      } else {
+        window.setTimeout(() => el.blur(), 0);  //TODO see if we can remove this
+      }
 }
 
-// focusElement(0);
+focusElement(0);
+
+
+function aggPokeName () {
+    document.querySelectorAll('input')
+    .forEach(input=>pokeInput.push(input.value));
+    console.log(pokeInput.length, 'help');
+}
 
 function handleKeypress (e) {
-    pos += 1;
-    focusElement();
+    let pokeName = pokeArray[0][0];
+    if (pos === pokeName.length) {
+        userInput.removeEventListener('keypress', handleKeypress);
+        // aggPokeName();
+        focusElement(false);
+      } else {
+        const el = userInput.querySelectorAll('input');
+        // aggPokeName();
+        el.innerText = '';
+        pos += 1;
+        focusElement();
+      }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -165,19 +202,3 @@ instructionsButton.addEventListener('click', () => {
       instructionsButton.textContent = 'Instructions';
     }
   });
-
-
-const instructions = () => {
-    const instructionsDiv = document.getElementById('instructionsDiv');
-    const instructionsButton = document.getElementById('instructionsButton');
-    const instructionsPar = document.getElementById('instructionsPar');
-    instructionsButton.addEventListener('click', () => {
-      if (instructionsPar.style.display === 'none') {
-        instructionsPar.style.display = 'block';
-        instructionsButton.textContent = 'Instructions';
-      } else {
-        instructionsPar.style.display = 'none';
-        instructionsButton.textContent = 'Instructions';
-      }
-    });
-  }
