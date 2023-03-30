@@ -14,6 +14,8 @@ let pos = 0;
 
 let isDisplayResultCards = false;
 
+let index = [];
+
 
 const fetchPoke = async () => {
     const response = await fetch('https://api.pikaserve.xyz/pokemon/random');
@@ -86,13 +88,14 @@ const getRandomPokemon = async () => {
     // get 1 random pokemon. 
     
     let randomIndex = Math.floor(Math.random() * x.data.length)
-    // console.log(randomIndex);
-    
+    console.log(randomIndex);
+    index.push(randomIndex);
+    console.log(index)
     // getRandomIndex();
 
     let pokemon = x.data[randomIndex];
         // console.log(pokemon);
-           
+         
     const pokemonImage1 = pokemon.images.small;
     imageLinks.push(pokemonImage1);
     // console.log(pokemonImage1);
@@ -100,7 +103,27 @@ const getRandomPokemon = async () => {
     // console.log(imageLinks);
     return imageLinks;
 }
-getRandomPokemon();
+// getRandomPokemon();
+
+
+
+const getRandomPokemonPrice = async () => {
+    const x = await getPokeDataTCG();
+    console.log(x)
+
+
+    let randomIndex = index[0];
+    console.log(randomIndex)
+
+    let pokemon = x.data[randomIndex];
+        console.log(pokemon);
+
+    const priceImage1 = pokemon.cardmarket.url
+        // console.log(priceImage1)
+}
+
+
+getRandomPokemonPrice()
 
 const createTest = () => {
     scrapeImg();
@@ -133,7 +156,13 @@ const add3RandomPokemon = async () => {
         poke1.src = x[0];
     }
     addRandomPokemon1();
-    
+
+    constAddRandomMcPrice = async () => {
+        const x = await getRandomPokemon();
+        // console.log(x);
+    }
+    // constAddRandomMcPrice();
+
     const addRandomPokemon2 = async () => {
         const x = await getRandomPokemon();
         // console.log(x);
@@ -152,7 +181,7 @@ const add3RandomPokemon = async () => {
     }
     addRandomPokemon3();
 }
-add3RandomPokemon();
+// add3RandomPokemon();
 
 
 const getGamePokeName = async () => {
@@ -235,7 +264,7 @@ const add3RandomGamePokeCards = async () => {
     } 
 } 
 
-add3RandomGamePokeCards();
+// add3RandomGamePokeCards();
 
 //create html and js functions for populating info on currently legal cards based on loaded pokemon and the best cards based on popularity/price
 
