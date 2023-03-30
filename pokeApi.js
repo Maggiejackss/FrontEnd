@@ -1,5 +1,6 @@
 const testBtn = document.getElementById('submit-game');
 const testBtn2 = document.getElementById('start-game');
+const testBtn3 = document.getElementById('test');
 const img = document.getElementById('fetched-image');
 const question = document.getElementById('question');
 const hintBox = document.getElementById('hint-box');
@@ -10,8 +11,9 @@ const instructionsPar = document.getElementById('instructionsPar');
 
 let pokeArray = [];
 let pos = 1;
+let userResponse = '';
 
-let isDisplayResultCards = false;
+let isDisplayResultCards = true;
 
 
 const fetchPoke = async () => {
@@ -119,22 +121,29 @@ const focusElement = (isFocus = true) => {
 focusElement(0);
 
 
-function aggPokeName () {
-    document.querySelectorAll('input')
-    .forEach(input=>pokeInput.push(input.value));
-    console.log(pokeInput.length, 'help');
+function aggUserInput () {
+    let answer = userInput.querySelectorAll('input')
+    .forEach(input=>userResponse += input.value);
 }
+
+function submitButton () {
+    let pokeName = pokeArray[0][0].toLowerCase();
+    aggUserInput();
+    console.log(pokeName, userResponse, pokeName === userResponse)
+    if (pokeName === userResponse) {
+        add3RandomGamePokeCards();
+    } else {
+        userResponse ='';
+    }
+}
+
 
 function handleKeypress (e) {
     let pokeName = pokeArray[0][0];
     if (pos === pokeName.length) {
         userInput.removeEventListener('keypress', handleKeypress);
-        // aggPokeName();
         focusElement(false);
       } else {
-        const el = userInput.querySelectorAll('input');
-        // aggPokeName();
-        el.innerText = '';
         pos += 1;
         focusElement();
       }
@@ -192,18 +201,9 @@ const add3RandomPokemon = async () => {
 add3RandomPokemon();
 
 
-const getGamePokeName = async () => {
-    const x = await gatherPoke();
-    // console.log(x);
-    const pokemonName =  x[0][0];
-    // console.log(pokemonName);
-    return pokemonName;
-}
-
-
 const getGamePokeNameData = async () => {
-    const x = await getGamePokeName();
     // console.log(x);
+    let x = pokeArray[0][0];
     const response = await fetch(`https://api.pokemontcg.io/v2/cards/?q=name:${x};`)
     const data = await response.json();
     // console.log(data);
@@ -272,8 +272,6 @@ const add3RandomGamePokeCards = async () => {
     } 
 } 
 
-add3RandomGamePokeCards();
-
 //create html and js functions for populating info on currently legal cards based on loaded pokemon and the best cards based on popularity/price
 
 testBtn2.addEventListener('click', gatherPoke);
@@ -288,3 +286,4 @@ instructionsButton.addEventListener('click', () => {
       instructionsButton.textContent = 'Instructions';
     }
   });
+  testBtn3.addEventListener('click', submitButton);
