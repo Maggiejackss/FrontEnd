@@ -286,4 +286,4 @@ instructionsButton.addEventListener('click', () => {
       instructionsButton.textContent = 'Instructions';
     }
   });
-  testBtn3.addEventListener('click', submitButton);
+testBtn3.addEventListener('click', submitButton);
