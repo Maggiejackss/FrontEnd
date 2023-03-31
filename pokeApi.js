@@ -9,11 +9,30 @@ const instructionsDiv = document.getElementById('instructionsDiv');
 const instructionsButton = document.getElementById('instructionsButton');
 const instructionsPar = document.getElementById('instructionsPar');
 
+
+const price0 = document.getElementById('m-c-price');
+const link0 = document.getElementById('m-c-link');
+
+
+const price1 = document.getElementById('m-v-price');
+const link1 = document.getElementById('m-v-link');
+
+const price2 = document.getElementById('m-v-price2');
+const link2 = document.getElementById('m-v-link2');
+
+
+
+
 let pokeArray = [];
 let pos = 1;
 let userResponse = '';
 
 let isDisplayResultCards = true;
+
+
+
+
+
 
 
 const fetchPoke = async () => {
@@ -125,7 +144,7 @@ function handleKeypress (e) {
 
 
 
-
+let index = [];
 
 
 
@@ -155,15 +174,19 @@ const getRandomPokemon = async () => {
 
     let pokemon = x.data[randomIndex];
         // console.log(pokemon);
-           
+    
+    index.push(pokemon);
+    // console.log(index[0]);    
+    
     const pokemonImage1 = pokemon.images.small;
     imageLinks.push(pokemonImage1);
     // console.log(pokemonImage1);
-
+    
     // console.log(imageLinks);
+    setPrices();
     return imageLinks;
 }
-getRandomPokemon();
+// getRandomPokemon();
 
 
 
@@ -171,6 +194,17 @@ getRandomPokemon();
 
 
 
+
+
+
+const setPrices = () => {
+    // console.log(index[0])
+
+
+    for(let i = 0; i <= 2; i++) {
+    `price${i}.innerText` = index[i].cardmarket.prices.averageSellPrice;
+    }
+}
 
 const add3RandomPokemon = async () => {
     const addRandomPokemon1 = async () => {
