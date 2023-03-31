@@ -84,7 +84,7 @@ const focusElement = (isFocus = true) => {
       }
 }
 
-focusElement(0);
+// focusElement(0);
 
 
 function aggUserInput () {
@@ -216,7 +216,7 @@ const getGamePokeNameData = async () => {
 
 const getRandomGamePokeCards = async () => {
     const imageLinks = [];
-
+    // for loop
     const x = await getGamePokeNameData();
     // console.log(x);
     // get 1 random pokemon. 
@@ -233,7 +233,7 @@ const getRandomGamePokeCards = async () => {
     imageLinks.push(pokemonImage1);
     // console.log(pokemonImage1);
 
-    // console.log(imageLinks);
+    console.log(imageLinks);
     return imageLinks;
 }
 // getRandomGamePokeCards();
@@ -256,7 +256,7 @@ const add3RandomGamePokeCards = async () => {
 
     const addRandomPokemon2 = async () => {
         const x = await getRandomGamePokeCards();
-        console.log(x)
+        // console.log(x)
         const poke2 = document.getElementById('m-v-image1');
 
         poke2.src = x[0];
@@ -265,7 +265,7 @@ const add3RandomGamePokeCards = async () => {
     
     const addRandomPokemon3 = async () => {
         const x = await getRandomGamePokeCards();
-        console.log(x)
+        // console.log(x)
         const poke3 = document.getElementById('m-v-image2');
 
         poke3.src = x[0];
