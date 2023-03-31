@@ -67,40 +67,6 @@ const answerBox = () => {
     };
 }
 
-const getPokeDataTCG = async () => {
-    // When the `pageSize` is 250, there are only 64 pages of data. 
-    let page = Math.floor(Math.random() * 65);
-    // console.log(page);
-    const x = await fetch(`https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=250`)
-    const response = await x.json();
-    // console.log(response);
-    return response;
-}
-// getPokeDataTCG();
-
-const getRandomPokemon = async () => {
-    const imageLinks = [];
-
-    const x = await getPokeDataTCG();
-    // console.log(x);
-    // get 1 random pokemon. 
-    
-    let randomIndex = Math.floor(Math.random() * x.data.length)
-    // console.log(randomIndex);
-    
-    // getRandomIndex();
-
-    let pokemon = x.data[randomIndex];
-        // console.log(pokemon);
-           
-    const pokemonImage1 = pokemon.images.small;
-    imageLinks.push(pokemonImage1);
-    // console.log(pokemonImage1);
-
-    // console.log(imageLinks);
-    return imageLinks;
-}
-getRandomPokemon();
 
 const createTest = () => {
     scrapeImg();
@@ -162,6 +128,42 @@ function handleKeypress (e) {
 
 
 
+
+
+const getPokeDataTCG = async () => {
+    // When the `pageSize` is 250, there are only 64 pages of data. 
+    let page = Math.floor(Math.random() * 65);
+    // console.log(page);
+    const x = await fetch(`https://api.pokemontcg.io/v2/cards?page=${page}&pageSize=250`)
+    const response = await x.json();
+    // console.log(response);
+    return response;
+}
+// getPokeDataTCG();
+
+const getRandomPokemon = async () => {
+    const imageLinks = [];
+
+    const x = await getPokeDataTCG();
+    // console.log(x);
+    // get 1 random pokemon. 
+    
+    let randomIndex = Math.floor(Math.random() * x.data.length)
+    // console.log(randomIndex);
+    
+    // getRandomIndex();
+
+    let pokemon = x.data[randomIndex];
+        // console.log(pokemon);
+           
+    const pokemonImage1 = pokemon.images.small;
+    imageLinks.push(pokemonImage1);
+    // console.log(pokemonImage1);
+
+    // console.log(imageLinks);
+    return imageLinks;
+}
+getRandomPokemon();
 
 
 
