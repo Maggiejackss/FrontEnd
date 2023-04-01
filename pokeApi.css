@@ -33,7 +33,7 @@ button {
 .m-c-image,
 .m-v-image1,
 .m-v-image2 {
-    height: 15rem;
+    height: 13rem;
 }
 
 .user-input {
@@ -48,4 +48,16 @@ button {
     font-family: 'Pokemon Solid', sans-serif;
     text-align: center;
     width: 150px;
+}
+
+.tcg {
+    /* background-image: url(); */
+    background-size: ;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding: 5px;
+    /* align-items: center; */
+    margin-top: 10px;
 }
