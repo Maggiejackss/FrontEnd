@@ -199,11 +199,6 @@ const getRandomPokemon = async () => {
 
 const setPrices = () => {
     // console.log(index[0])
-
-
-    for(let i = 0; i <= 2; i++) {
-    `price${i}.innerText` = index[i].cardmarket.prices.averageSellPrice;
-    }
 }
 
 const add3RandomPokemon = async () => {
