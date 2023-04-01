@@ -27,7 +27,7 @@ let pokeArray = [];
 let pos = 1;
 let userResponse = '';
 
-let isDisplayResultCards = false;
+// let isDisplayResultCards = false;
 
 
 
@@ -46,6 +46,8 @@ const gatherPoke = async () => {
     const pokeArrayGather = [data.name.english, data.type, data.image.hires, data.species];
     pokeArray.push(pokeArrayGather);
     // console.log(pokeArray);
+    add3RandomPokemon();
+
     return pokeArray;
 }
 
@@ -229,7 +231,7 @@ const add3RandomPokemon = async () => {
 
     setPrices();
 };
-add3RandomPokemon();
+
 
 
 const setPrices = function () {
@@ -346,21 +348,18 @@ const getRandomGamePokeCards = async () => {
 
 
 
-const gamePokeImg1 = document.getElementById("m-c-image");
-const gamePokeImg2 = document.getElementById("m-v-image1");
-const gamePokeImg3 = document.getElementById("m-v-image2");
 
-isDisplayResultCards = true;
+
+// isDisplayResultCards = true;
 
 
 const add3RandomGamePokeCards = async () => {
 
 const data = await getRandomGamePokeCards();
 console.log(data)
-    if (isDisplayResultCards === true) {
-        gamePokeImg1.src = data[0][0];
-        gamePokeImg2.src = data[0][1];
-        gamePokeImg3.src = data[0][2];
+        randomPoke1.src = data[0][0];
+        randomPoke2.src = data[0][1];
+        randomPoke3.src = data[0][2];
         
 
         price1.innerText = data[1][0];
@@ -370,9 +369,9 @@ console.log(data)
         link1.href = data[2][0];
         link2.href = data[2][1];
         link3.href = data[2][2];
-    }
 } ;
-add3RandomGamePokeCards();
+
+// add3RandomGamePokeCards();
 
 
 
