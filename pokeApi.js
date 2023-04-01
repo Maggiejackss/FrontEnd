@@ -1,5 +1,5 @@
-const testBtn = document.getElementById('submit-game');
-const testBtn2 = document.getElementById('start-game');
+const testBtn = document.getElementById('start-game');
+const testBtn2 = document.getElementById('transition-game');
 const testBtn3 = document.getElementById('test');
 const img = document.getElementById('fetched-image');
 const question = document.getElementById('question');
@@ -47,7 +47,7 @@ const gatherPoke = async () => {
     const data = await fetchPoke();
     const pokeArrayGather = [data.name.english, data.type, data.image.hires, data.species];
     pokeArray.push(pokeArrayGather);
-    // console.log(pokeArray);
+    console.log(pokeArray);
     add3RandomPokemon();
     clearExplanation();
 }
@@ -56,8 +56,6 @@ const clearExplanation = () => {
     testBtn2.className = 'hidden';
     gameArea.className = ''; 
     explanation.className = 'hidden';
-    testBtn3.className = 'hidden';
-
 }
 
 
@@ -99,12 +97,11 @@ const answerBox = () => {
 
 
 const createTest = () => {
-    testBtn.className = 'hidden';
-    testBtn3.className = '';
     scrapeImg();
     structureQuestion();
     hintBoxStructure();
     answerBox();
+    testBtn.className = 'hidden';
 }
 
 const focusElement = (isFocus = true) => {
@@ -124,33 +121,35 @@ function aggUserInput () {
     .forEach(input=>userResponse += input.value);
 }
 
-function submitButton () {
-    let pokeName = pokeArray[0][0].toLowerCase();
-    aggUserInput();
-    console.log(pokeName, userResponse, pokeName === userResponse)
-    if (pokeName === userResponse) {
-        add3RandomGamePokeCards();
-    } else {
-        userResponse ='';
-    }
-}
-
 
 function handleKeypress (e) {
-    let pokeName = pokeArray[0][0].toLowerCase();
+    let pokeName = pokeArray[0][0].toLowerCase().toLowerCase();
     if (pos === pokeName.length) {
-        userInput.removeEventListener('keypress', handleKeypress);
-        focusElement(false);
+        guide();
       } else if (pos != pokeName.length) {
         pos += 1;
-        focusElement();}
-       else if (pos === pokeName.length && pokeName){
-        userResponse = '';
-       }
+        focusElement();
+      } 
 }
 
-
-
+function guide() {
+    let pokeName = pokeArray[0][0].toLowerCase();
+    aggUserInput();
+    if (pokeName === userResponse) {
+        userInput.removeEventListener('keypress', handleKeypress);
+        focusElement(false);
+        console.log('correct');
+        add3RandomGamePokeCards();
+    } else { 
+        console.log(userResponse);
+        userResponse = '';
+        pos = 1;
+        console.log('wrong');
+        focusElement();
+        userInput.querySelectorAll('input')
+        .forEach(input=>input.value = '');
+    }
+}
 
 
 
@@ -408,4 +407,3 @@ instructionsButton.addEventListener('click', () => {
       instructionsButton.textContent = 'Instructions';
     }
   });
-testBtn3.addEventListener('click', submitButton);

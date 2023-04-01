@@ -11,11 +11,17 @@ input {
     height: 25px;
 }
 
+.button-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .game-container {
     background-color: white;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    height: 20rem;
     border: 3px solid crimson;
     background-image: url()
 }
@@ -24,12 +30,20 @@ html {
     background-image: url('wallpaper.webp');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
 }
 
 .fetched-image {
     width: 300px;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 button {
     width: 50px;
@@ -59,6 +73,7 @@ button {
 
 .tcg {
     /* background-image: url(); */
+    background-color: white;
     background-size: ;
     display: flex;
     flex-wrap: wrap;
@@ -67,4 +82,13 @@ button {
     padding: 5px;
     /* align-items: center; */
     margin-top: 10px;
+}
+
+.instructionsPar {
+    background-color: white;
+}
+
+.instructionsDiv {
+    display: flex;
+    justify-content: center;
 }
