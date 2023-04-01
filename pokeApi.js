@@ -285,7 +285,6 @@ const gameImageLinks = [];
 const gamePrice = [];
 const gameUrl = []
 
-
 const getRandomGamePokeCards = async () => {
     // for loop
     const x = await getGamePokeNameData();
@@ -293,15 +292,14 @@ const getRandomGamePokeCards = async () => {
     // get 1 random pokemon. 
     
     function getRandomIndices() {
-        let randomIndex1 = Math.floor(Math.random() * x.data.length)
-    
-        let randomIndex2 = Math.floor(Math.random() * x.data.length)
-        
-        let randomIndex3 = Math.floor(Math.random() * x.data.length)
-        gameRandom3Indexes.push(randomIndex1);
-        gameRandom3Indexes.push(randomIndex2);
-        gameRandom3Indexes.push(randomIndex3);
-        // console.log(gameRandom3Indexes);
+        const dope = function () {
+            while(gameRandom3Indexes.length < 3){
+                var r = Math.floor(Math.random() * 3) + 1;
+                if(gameRandom3Indexes.indexOf(r) === -1) gameRandom3Indexes.push(r);
+            }
+            console.log(randomNumbers);
+            
+            };
     };
     
     function getPokeData () {
