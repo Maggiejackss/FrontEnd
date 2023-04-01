@@ -178,20 +178,25 @@ const imageLinks = [];
 const random3Indexes = []
 
 
+
+
+
+
 const get3RandomPokemon = async () => {
     const x = await getPokeDataTCG();
     // console.log(x);
     // get 1 random pokemon. 
     function getRandomIndeces() {
-        let randomIndex1 = Math.floor(Math.random() * x.data.length)
-    
-        let randomIndex2 = Math.floor(Math.random() * x.data.length)
-        
-        let randomIndex3 = Math.floor(Math.random() * x.data.length)
-        random3Indexes.push(randomIndex1);
-        random3Indexes.push(randomIndex2);
-        random3Indexes.push(randomIndex3);
-        // console.log(random3Indexes);
+        const dope = function () {
+            while(random3Indexes.length < 3){
+                var r = Math.floor(Math.random() * x.data.length) + 1;
+                if(random3Indexes.indexOf(r) === -1) random3Indexes.push(r);
+            }
+
+            console.log(random3Indexes);
+            
+            };
+            dope();
     };
     
     // getRandomIndex();
@@ -228,6 +233,12 @@ const get3RandomPokemon = async () => {
     // console.log(index);
     return data;
 }
+
+
+
+
+
+
 
 
 const randomPoke1 = document.getElementById("m-c-image");
@@ -284,6 +295,9 @@ const gameRandom3Indexes = [];
 const gameImageLinks = [];
 const gamePrice = [];
 const gameUrl = []
+
+
+
 
 
 const getRandomGamePokeCards = async () => {
