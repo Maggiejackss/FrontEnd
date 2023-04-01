@@ -126,18 +126,30 @@ function submitButton () {
 
 
 function handleKeypress (e) {
-    let pokeName = pokeArray[0][0];
+    let pokeName = pokeArray[0][0].toLowerCase();
     if (pos === pokeName.length) {
-        userInput.removeEventListener('keypress', handleKeypress);
-        focusElement(false);
-      } else {
+        guide();
+      } else if (pos != pokeName.length) {
         pos += 1;
         focusElement();
-      }
+      } 
 }
 
-
-
+function guide() {
+    let pokeName = pokeArray[0][0].toLowerCase();
+    aggUserInput();
+    if (pokeName === userResponse) {
+        userInput.removeEventListener('keypress', handleKeypress);
+        focusElement(false);
+    } else { 
+        userResponse = '';
+        pos = 1;
+        console.log('wrong');
+        focusElement();
+        userInput.querySelectorAll('input')
+        .forEach(input=>input.value = '');
+    }
+}
 
 
 
@@ -257,7 +269,7 @@ const setPrices = function () {
 
 
 const getGamePokeNameData = async () => {
-    await gatherPoke();
+    // await gatherPoke();
     // console.log(pokeArray);
     let x = pokeArray[0][0];
     const response = await fetch(`https://api.pokemontcg.io/v2/cards/?q=name:${x};`)
@@ -265,7 +277,7 @@ const getGamePokeNameData = async () => {
     // console.log(data);
     return data;
 };
-getGamePokeNameData();
+// getGamePokeNameData();
 
 
 const gameRandom3Indexes = [];
