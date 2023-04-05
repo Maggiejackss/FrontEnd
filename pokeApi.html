@@ -11,16 +11,28 @@
 </head>
 
 <body>
-    <div id="explanation">
-        <p>explanation</p>
-        <button id="transition-game">gather</button>
+    <div id="popup" class="popup">
+        <img id="oak" class="oak" src="External Sources/oak.png"></img>
+		<p>Hello there! Welcome to the world of Pokemon! My name is OAK! People call me the Pokemon Professor! This world is inhabited by creatures called Pokemon! For some people, Pokemon are pets. Others use them for fights. Myself… I study Pokemon as a profession, and I’ve been undertaking research to unravel Pokemon mysteries..</p>
+		<button id="next">Next</button>
+	</div>
+    <div id="popup2" class="hidden">
+        <img id="maggie" class="maggie" src="External Sources/prof-maggie.JPG"></img>
+        <img id="trainer-frankie" class="trainer-frankie" src="External Sources/trainer-frankie.png"></img>
+        <img id="bug-marcus" class="bug-marcus" src="External Sources/bug-marcus.png"></img>
+        <p>This is Prof. Maggie, Trainer Frankie, and Bug Catcher Marcus. They use Pokemon as a way to practice coding and improve the PokeDex. A PokeDex is like an encyclopedia just for Pokemon!</p>
+        <button id="close" onclick="document.getElementById('popup').style.display='none'">Close</button>
     </div>
     <div id="mainCont" class="hidden">
         <div class="instructionsDiv" id="instructionsDiv">
             <button class="instructionsButton" id="instructionsButton">Instructions</button>
                 <p class="instructionsPar" id="instructionsPar">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates architecto nesciunt fuga laborum nisi, neque nobis esse aspernatur nulla voluptate. Ea adipisci quis veniam quam iste cumque repellendus excepturi? Deleniti?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates architecto nesciunt fuga laborum nisi, neque nobis esse aspernatur nulla voluptate. Ea adipisci quis veniam quam iste cumque repellendus excepturi? Deleniti?
+                    This game tests your Pokemon knowledge and helps the team fill the PokeDex. Your goal is to identify as many wild Pokemon as you can. If you need help, use the in-game hints (species and types) to identify any Wild Pokemon!
+                    How to Play:
+                    1.	Hit “gather” to approach and reveal a wild Pokemon
+                    2.	Hit “Start Game” to reveal the wild Pokemon
+                    3.	Type out the Pokemon name in the blank spaces
+                    4.	Hit “Submit” to log your answer and reveal if you’ve correctly identified the Pokemon
                 </p>
         </div>
 

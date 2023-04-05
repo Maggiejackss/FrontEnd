@@ -1,5 +1,5 @@
 const testBtn = document.getElementById('start-game');
-const testBtn2 = document.getElementById('transition-game');
+const testBtn2 = document.getElementById('close');
 const testBtn3 = document.getElementById('test');
 const img = document.getElementById('fetched-image');
 const question = document.getElementById('question');
@@ -194,7 +194,7 @@ const get3RandomPokemon = async () => {
     function getRandomIndeces() {
         const dope = function () {
             while(random3Indexes.length < 3){
-                var r = Math.floor(Math.random() * x.data.length) + 1;
+                var r = Math.floor(Math.random() * x.data.length);
                 if(random3Indexes.indexOf(r) === -1) random3Indexes.push(r);
             }
 
@@ -418,8 +418,18 @@ const data = await getRandomGamePokeCards();
 
 // add3RandomGamePokeCards();
 
+// Marcus working on 
+// window.onload = function() {
+//     const popup = document.getElementById("popup");
+// };
 
+const unhidePopup2 = () => {
+    popup.className = "hidden";
+    popup2.className = "popup";
+}
 
+const nextButton = document.getElementById('next');
+nextButton.addEventListener('click', unhidePopup2);
 
 
 
