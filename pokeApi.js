@@ -1,5 +1,5 @@
-const testBtn = document.getElementById('start-game');
-const testBtn2 = document.getElementById('close');
+const testBtn = document.getElementById('close');
+const testBtn2 = document.getElementById('next');
 const testBtn3 = document.getElementById('test');
 const img = document.getElementById('fetched-image');
 const question = document.getElementById('question');
@@ -49,9 +49,6 @@ const gatherPoke = async () => {
     const data = await fetchPoke();
     const pokeArrayGather = [data.name.english, data.type, data.image.hires, data.species];
     pokeArray.push(pokeArrayGather);
-    console.log(pokeArray);
-    add3RandomPokemon();
-    clearExplanation();
 }
 
 // gatherPoke();
@@ -101,12 +98,15 @@ const answerBox = () => {
 
 
 const createTest = () => {
+    // clearExplanation();
+    add3RandomPokemon();
     scrapeImg();
     structureQuestion();
     hintBoxStructure();
     answerBox();
     playSound();
-    testBtn.className = 'hidden';
+    popup2.className = 'hidden';
+    gameArea.className = 'main-cont';
 }
 
 const focusElement = (isFocus = true) => {
