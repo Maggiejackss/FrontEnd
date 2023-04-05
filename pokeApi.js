@@ -33,7 +33,9 @@ let userResponse = '';
 
 
 
-
+const playSound = () => {
+    new Audio('pokemonaudio.mp3').play();
+}
 
 
 
@@ -56,7 +58,7 @@ const gatherPoke = async () => {
 
 const clearExplanation = () => {
     testBtn2.className = 'hidden';
-    gameArea.className = ''; 
+    gameArea.className = 'main-cont'; 
     explanation.className = 'hidden';
 }
 
@@ -103,6 +105,7 @@ const createTest = () => {
     structureQuestion();
     hintBoxStructure();
     answerBox();
+    playSound();
     testBtn.className = 'hidden';
 }
 
@@ -314,11 +317,11 @@ const getRandomGamePokeCards = async () => {
 
         const dope = function () {
             while(gameRandom3Indexes.length < 3){
-                var r = Math.floor(Math.random() * x.data.length) + 1;
+                var r = Math.floor(Math.random() * x.data.length);
                 if(gameRandom3Indexes.indexOf(r) === -1) gameRandom3Indexes.push(r);
             }
 
-            console.log(random3Indexes);
+            console.log(gameRandom3Indexes);
             
             };
             dope();
@@ -386,7 +389,7 @@ const getRandomGamePokeCards = async () => {
     // console.log(data);
     return data;
 };
-getRandomGamePokeCards();
+// getRandomGamePokeCards();
 
 
 
@@ -398,7 +401,7 @@ getRandomGamePokeCards();
 const add3RandomGamePokeCards = async () => {
 
 const data = await getRandomGamePokeCards();
-console.log(data)
+// console.log(data)
         randomPoke1.src = data[0][0];
         randomPoke2.src = data[0][1];
         randomPoke3.src = data[0][2];
@@ -429,11 +432,11 @@ testBtn.addEventListener('click', createTest);
 //change to keyup because it wasnt reading keydown
 userInput.addEventListener('keyup', handleKeypress);
 instructionsButton.addEventListener('click', () => {
-    if (instructionsPar.style.display === 'none') {
-      instructionsPar.style.display = 'block';
+    if (instructionsPar.className === 'hidden') {
+      instructionsPar.className = 'instructionsPar';
       instructionsButton.textContent = 'Instructions';
     } else {
-      instructionsPar.style.display = 'none';
+      instructionsPar.className = 'hidden';
       instructionsButton.textContent = 'Instructions';
     }
   });

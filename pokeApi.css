@@ -7,8 +7,15 @@
 }
 
 input {
+    background-color: rgb(243,216,87);
+    border-color: rgb(243,216,87);
     width: 25px;
     height: 25px;
+}
+
+.main-cont {
+    /* background-color: red; */
+    width: 800px;
 }
 
 .button-container{
@@ -17,13 +24,15 @@ input {
 }
 
 .game-container {
-    background-color: white;
+    background-image: url(pokeball__free_background__by_scribblin_d2p22dg-fullview.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     border: 3px solid crimson;
-
+    width: 100%;
 }
 
 html {
@@ -75,7 +84,7 @@ button {
 
 .tcg {
     /* background-image: url(); */
-    background-color: white;
+    background-color: clear;
     display: flex;
     flex-wrap: wrap;
     column-gap: 2rem;
@@ -84,12 +93,14 @@ button {
     /* align-items: center; */
     margin-top: 10px;
     margin: 100px;
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 
 .instructionsPar {
     background-color: white;
     display: flex;
+    flex-direction: column;
+    align-items: center; 
     flex-grow: 1;
     margin: 20px;
 }
@@ -97,10 +108,11 @@ button {
 
 .instructionsDiv {
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
     flex-grow: 1;
     padding: 50px;
+    width: 100%;
 }
 
 
