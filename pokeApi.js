@@ -425,11 +425,12 @@ const data = await getRandomGamePokeCards();
 
 const unhidePopup2 = () => {
     popup.className = "hidden";
-    popup2.className = "popup";
+    dadcontainer.className = "dadcontainer"
 }
 
 const nextButton = document.getElementById('next');
 nextButton.addEventListener('click', unhidePopup2);
+
 
 
 
