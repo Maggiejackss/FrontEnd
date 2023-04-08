@@ -16,12 +16,40 @@
 		<p>Hello there! Welcome to the world of Pokemon! My name is OAK! People call me the Pokemon Professor! This world is inhabited by creatures called Pokemon! For some people, Pokemon are pets. Others use them for fights. Myself… I study Pokemon as a profession, and I’ve been undertaking research to unravel Pokemon mysteries..</p>
 		<button id="next">Next</button>
 	</div>
-    <div id="popup2" class="hidden">
-        <img id="maggie" class="maggie" src="External Sources/prof-maggie.JPG"></img>
-        <img id="trainer-frankie" class="trainer-frankie" src="External Sources/trainer-frankie.png"></img>
-        <img id="bug-marcus" class="bug-marcus" src="External Sources/bug-marcus.png"></img>
-        <p>This is Prof. Maggie, Trainer Frankie, and Bug Catcher Marcus. They use Pokemon as a way to practice coding and improve the PokeDex. A PokeDex is like an encyclopedia just for Pokemon!</p>
-        <button id="close" onclick="document.getElementById('popup').style.display='none'">Close</button>
+    <div id="dadcontainer" class="hidden">
+        <div id="bigcontainer" class="bigcontainer">
+            <div id="magcontainer" class="containerabc">
+                <div id="magcontainer1" class="magcontainer1">
+                    <img id="maggie" class="sprites" src="External Sources/prof-maggie.png"></img>
+                    <p class="paragraph">Prof. Maggie</p>
+                </div>
+                <div id="magcontainer2" class="charintro">
+                    <p>Hi! My name is Professor Maggie! As the team lead for this project I worked with Trainer Marcus and Breeder Frankie to bring you this fun Pokemon game to help train you to identify wild Pokemon! If you want to see more work I've done go check out my GitHub here: https://github.com/Maggiejackss</p>
+                </div>
+            
+            </div>
+            <div id="fracontainer" class="containerabc">
+                <div id="magcontainer1" class="magcontainer1">
+                    <img id="trainer-frankie" class="sprites" src="External Sources/trainer-frankie.png"></img>
+                    <p class="paragraph">Trainer Frankie</p>
+                </div>
+                <div id="magcontainer2" class="charintro">Hello, My name is Breeder Frankie! I was responsible for capturing the Pokemon, creating cards and displaying them for you. I hope you enjoy the cards!</div>
+            </div>
+            <div id="marcontainer" class="containerabc">
+                <div id="magcontainer1" class="magcontainer1">
+                    <img id="bug-marcus" class="sprites" src="External Sources/bug-marcus.png"></img>
+                    <p class="paragraph">Bug Catcher Marcus</p>
+                </div>
+                <div id="magcontainer2" class="charintro">Howdy! My name is Bug Catcher Marcus, and I collaborated with Prof. Maggie and Trainer Frankie to populate these popups, images, and initializing the game after the windows are closed. Although I’m a bug catcher, I actually don’t like bugs. I like programs to work as they should 😊
+                    Check out my github page on: https://github.com/mvmanalac
+                    </div>
+            </div>
+            <div class="intro">    
+                <p>This is Prof. Maggie, Trainer Frankie, and Bug Catcher Marcus. They use Pokemon as a way to practice coding and improve the PokeDex. A PokeDex is like an encyclopedia just for Pokemon!</p>
+                <p>We need your help filling out the PokeDex by identifying Pokemon in the wild. Your very own Pokemon legend is about to unfold. Take courage, and leap into the world of Pokemon where dreams, adventure and friendships await!</p>
+            </div>
+        </div>
+        <button id="close" onclick="document.getElementById('dadcontainer').style.display='none'">Close</button>
     </div>
     <div id="mainCont" class="hidden">
         <div class="instructionsDiv" id="instructionsDiv">
@@ -39,12 +67,10 @@
         <div class="game-container" id="game-container">
             <img src="" alt="" class="fetched-image" id="fetched-image">
             <div id="question"></div>
-            <div class="some-words">
-            <div id="hint-box"></div>
-            </div>
+            <!-- <div class="some-words"> -->
 
-            <div class="user-input" id="user-input">
-            </div>
+            <div class="user-input" id="user-input"></div>
+            <div id="hint-box" class="hint-box"></div>
 
             <div class="button-container">
                 <button id="start-game">start game</button>

@@ -1,8 +1,8 @@
-const testBtn = document.getElementById('start-game');
-const testBtn2 = document.getElementById('close');
+const testBtn = document.getElementById('close');
+const testBtn2 = document.getElementById('next');
 const testBtn3 = document.getElementById('test');
 const img = document.getElementById('fetched-image');
-const question = document.getElementById('question');
+const questioN = document.getElementById('question');
 const hintBox = document.getElementById('hint-box');
 const userInput = document.getElementById('user-input');
 const instructionsDiv = document.getElementById('instructionsDiv');
@@ -49,9 +49,6 @@ const gatherPoke = async () => {
     const data = await fetchPoke();
     const pokeArrayGather = [data.name.english, data.type, data.image.hires, data.species];
     pokeArray.push(pokeArrayGather);
-    console.log(pokeArray);
-    add3RandomPokemon();
-    clearExplanation();
 }
 
 // gatherPoke();
@@ -70,10 +67,10 @@ const scrapeImg = () => {
 }
 
 const structureQuestion = () => {
-    const question = `Which Pokemon is this?`;
+    const question = `Who's that Pokemon?`;
     //same concept as the img in above function
     //use html structure to add hangman style blank spaces to allow guessing
-    question.innerText = question;
+    questioN.innerText = question;
 }
 
 const hintBoxStructure = () => {
@@ -101,12 +98,15 @@ const answerBox = () => {
 
 
 const createTest = () => {
+    // clearExplanation();
+    add3RandomPokemon();
     scrapeImg();
     structureQuestion();
     hintBoxStructure();
     answerBox();
     playSound();
-    testBtn.className = 'hidden';
+    popup2.className = 'hidden';
+    gameArea.className = 'main-cont';
 }
 
 const focusElement = (isFocus = true) => {
@@ -425,11 +425,12 @@ const data = await getRandomGamePokeCards();
 
 const unhidePopup2 = () => {
     popup.className = "hidden";
-    popup2.className = "popup";
+    dadcontainer.className = "dadcontainer"
 }
 
 const nextButton = document.getElementById('next');
 nextButton.addEventListener('click', unhidePopup2);
+
 
 
 
