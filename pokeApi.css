@@ -147,6 +147,7 @@ button {
     background-color: rgb(243,216,87);
     display: flex;
     flex-direction: column;
+    padding: 5px;
 }
 
 

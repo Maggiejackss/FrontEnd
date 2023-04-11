@@ -8,6 +8,7 @@ const instructionsDiv = document.getElementById('instructionsDiv');
 const instructionsButton = document.getElementById('instructionsButton');
 const instructionsPar = document.getElementById('instructionsPar');
 const gameArea = document.getElementById('mainCont');
+const hintBox = document.getElementById('hint-box');
 const explanation = document.getElementById('explanation');
 
 
@@ -50,7 +51,8 @@ const fetchPoke = async () => {
 const gatherPoke = async () => {
     const data = await fetchPoke();
     const pokeName = data.name;
-    pokeArray.push(pokeName);
+    const pokeTypes = data.types;
+    pokeArray.push(pokeName, pokeTypes);
     // console.log(pokeArray);
 }
 
@@ -89,17 +91,31 @@ const answerBox = () => {
     };
 }
 
+const creatHints = () => {
+    const pokeTypes = pokeArray[2];
+    if (pokeTypes.length === 2) {
+        const pokeType1 = pokeTypes[0].type.name;
+        const pokeType2 = pokeTypes[1].type.name;
+        hintBox.innerText = `Type(s): ${pokeType1}, ${pokeType2}`;
+    } else {
+        const pokeType1 = pokeTypes[0].type.name;
+        hintBox.innerText = `Type(s): ${pokeType1}`;
+    }
+}
 
-const createTest = () => {
+
+const createTest = async () => {
     // clearExplanation();
-    add3RandomPokemon();
+    await add3RandomPokemon();
     scrapeImg();
     structureQuestion();
     answerBox();
+    creatHints();
     // playSound();
     popup2.className = 'hidden';
     gameArea.className = 'main-cont';
 }
+
 
 const focusElement = (isFocus = true) => {
     const el = userInput.querySelector(`[data-position="${pos}"]`);
@@ -134,7 +150,7 @@ function guide() {
     let pokeName = pokeArray[1].toLowerCase();
     aggUserInput();
     if (pokeName === userResponse) {
-        userInput.removeEventListener('keydown', handleKeypress);
+        userInput.removeEventListener('keyup', handleKeypress);
         focusElement(false);
         add3RandomGamePokeCards();
     } else {
@@ -432,7 +448,7 @@ nextButton.addEventListener('click', unhidePopup2);
 
 testBtn2.addEventListener('click', gatherPoke);
 testBtn.addEventListener('click', createTest);
-userInput.addEventListener('keydown', handleKeypress);
+userInput.addEventListener('keyup', handleKeypress);
 instructionsButton.addEventListener('click', () => {
     if (instructionsPar.className === 'hidden') {
       instructionsPar.className = 'instructionsPar';
