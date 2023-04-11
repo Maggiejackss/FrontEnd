@@ -3,12 +3,12 @@ const testBtn2 = document.getElementById('next');
 const testBtn3 = document.getElementById('test');
 const img = document.getElementById('fetched-image');
 const questioN = document.getElementById('question');
-const hintBox = document.getElementById('hint-box');
 const userInput = document.getElementById('user-input');
 const instructionsDiv = document.getElementById('instructionsDiv');
 const instructionsButton = document.getElementById('instructionsButton');
 const instructionsPar = document.getElementById('instructionsPar');
 const gameArea = document.getElementById('mainCont');
+const hintBox = document.getElementById('hint-box');
 const explanation = document.getElementById('explanation');
 
 
@@ -40,15 +40,20 @@ const playSound = () => {
 
 
 const fetchPoke = async () => {
-    const response = await fetch('https://api.pikaserve.xyz/pokemon/random');
+    let number = Math.floor(Math.random() * 845);
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${number}`);
     const data = await response.json();
+    const pokeImgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`
+    pokeArray.push(pokeImgSrc);
     return data;
 }
 
 const gatherPoke = async () => {
     const data = await fetchPoke();
-    const pokeArrayGather = [data.name.english, data.type, data.image.hires, data.species];
-    pokeArray.push(pokeArrayGather);
+    const pokeName = data.name;
+    const pokeTypes = data.types;
+    pokeArray.push(pokeName, pokeTypes);
+    // console.log(pokeArray);
 }
 
 // gatherPoke();
@@ -61,7 +66,7 @@ const clearExplanation = () => {
 
 
 const scrapeImg = () => {
-    const pokeImgUrl = pokeArray[0][2];
+    const pokeImgUrl = pokeArray[0];
     // console.log(pokeImgUrl);
     img.src = pokeImgUrl;
 }
@@ -73,18 +78,8 @@ const structureQuestion = () => {
     questioN.innerText = question;
 }
 
-const hintBoxStructure = () => {
-    const pokeType = pokeArray[0][1];
-    const pokeSpecies = pokeArray[0][3];
-    const typeBox = document.createElement('div');
-    const speciesBox = document.createElement('div');
-    speciesBox.innerText = `species = ${pokeSpecies}`;
-    typeBox.innerText = `type(s) = ${pokeType}`;
-    hintBox.append(speciesBox, typeBox);
-}
-
 const answerBox = () => {
-    const pokeName = pokeArray[0][0];
+    const pokeName = pokeArray[1];
     for (let i = 1; i <= pokeName.length; i++) {
         const letterInput = document.createElement('input');
         const inputCont = document.createElement('div');
@@ -96,18 +91,31 @@ const answerBox = () => {
     };
 }
 
+const creatHints = () => {
+    const pokeTypes = pokeArray[2];
+    if (pokeTypes.length === 2) {
+        const pokeType1 = pokeTypes[0].type.name;
+        const pokeType2 = pokeTypes[1].type.name;
+        hintBox.innerText = `Type(s): ${pokeType1}, ${pokeType2}`;
+    } else {
+        const pokeType1 = pokeTypes[0].type.name;
+        hintBox.innerText = `Type(s): ${pokeType1}`;
+    }
+}
 
-const createTest = () => {
+
+const createTest = async () => {
     // clearExplanation();
-    add3RandomPokemon();
+    await add3RandomPokemon();
     scrapeImg();
     structureQuestion();
-    hintBoxStructure();
     answerBox();
-    playSound();
+    creatHints();
+    // playSound();
     popup2.className = 'hidden';
     gameArea.className = 'main-cont';
 }
+
 
 const focusElement = (isFocus = true) => {
     const el = userInput.querySelector(`[data-position="${pos}"]`);
@@ -128,20 +136,20 @@ function aggUserInput () {
 
 
 function handleKeypress (e) {
-    let pokeName = pokeArray[0][0].toLowerCase();
-    pos += 1;
-    if (pos === pokeName.length + 1) {
-      guide();
-    } else if (pos != pokeName.length + 1) {
-      focusElement();
-    }
+    let pokeName = pokeArray[1].toLowerCase();
+    if (pos === pokeName.length) {
+        guide();
+      } else {
+        pos += 1;
+        focusElement();
+      }
 }
 
 function guide() {
-    let pokeName = pokeArray[0][0].toLowerCase();
+    let pokeName = pokeArray[1].toLowerCase();
     aggUserInput();
     if (pokeName === userResponse) {
-        userInput.removeEventListener('keydown', handleKeypress);
+        userInput.removeEventListener('keyup', handleKeypress);
         focusElement(false);
         add3RandomGamePokeCards();
     } else {
@@ -287,7 +295,7 @@ const setPrices = function () {
 const getGamePokeNameData = async () => {
     // await gatherPoke();
     // console.log(pokeArray);
-    let x = pokeArray[0][0];
+    let x = pokeArray[1];
     const response = await fetch(`https://api.pokemontcg.io/v2/cards/?q=name:${x};`)
     const data = await response.json();
     // console.log(data);
@@ -440,7 +448,7 @@ nextButton.addEventListener('click', unhidePopup2);
 
 testBtn2.addEventListener('click', gatherPoke);
 testBtn.addEventListener('click', createTest);
-userInput.addEventListener('keydown', handleKeypress);
+userInput.addEventListener('keyup', handleKeypress);
 instructionsButton.addEventListener('click', () => {
     if (instructionsPar.className === 'hidden') {
       instructionsPar.className = 'instructionsPar';
