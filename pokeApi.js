@@ -127,24 +127,25 @@ function handleKeypress (e) {
         pos += 1;
         focusElement();
       } 
+
 }
 
 function guide() {
     let pokeName = pokeArray[1].toLowerCase();
     aggUserInput();
     if (pokeName === userResponse) {
-        userInput.removeEventListener('keypress', handleKeypress);
+        userInput.removeEventListener('keydown', handleKeypress);
         focusElement(false);
-        console.log('correct');
         add3RandomGamePokeCards();
-    } else { 
-        console.log(userResponse);
-        userResponse = '';
+    } else {
+        // userResponse = '';
         pos = 1;
         console.log('wrong');
         focusElement();
-        userInput.querySelectorAll('input')
-        .forEach(input=>input.value = '');
+        setTimeout(() => {
+          userInput.querySelectorAll('input').forEach(input=>input.value = '');
+        }, 100)
+        
     }
 }
 
@@ -431,8 +432,7 @@ nextButton.addEventListener('click', unhidePopup2);
 
 testBtn2.addEventListener('click', gatherPoke);
 testBtn.addEventListener('click', createTest);
-//change to keyup because it wasnt reading keydown
-userInput.addEventListener('keyup', handleKeypress);
+userInput.addEventListener('keydown', handleKeypress);
 instructionsButton.addEventListener('click', () => {
     if (instructionsPar.className === 'hidden') {
       instructionsPar.className = 'instructionsPar';
