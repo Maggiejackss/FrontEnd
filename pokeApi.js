@@ -10,6 +10,8 @@ const instructionsPar = document.getElementById('instructionsPar');
 const gameArea = document.getElementById('mainCont');
 const hintBox = document.getElementById('hint-box');
 const explanation = document.getElementById('explanation');
+const popup = document.getElementById('popup');
+const popup2 = document.getElementById('dadcontainer');
 
 
 const price1 = document.getElementById('m-c-price');
@@ -111,7 +113,7 @@ const createTest = async () => {
     structureQuestion();
     answerBox();
     creatHints();
-    // playSound();
+    playSound();
     popup2.className = 'hidden';
     gameArea.className = 'main-cont';
 }

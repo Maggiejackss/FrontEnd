@@ -20,25 +20,25 @@
         <div id="bigcontainer" class="bigcontainer">
             <div id="magcontainer" class="containerabc">
                 <div id="magcontainer1" class="magcontainer1">
-                    <img id="maggie" class="sprites" src="External Sources/prof-maggie.png"></img>
                     <p class="paragraph">Prof. Maggie</p>
+                    <img id="maggie" class="sprites" src="External Sources/prof-maggie.JPG"></img>
                 </div>
                 <div id="magcontainer2" class="charintro">
-                    <p>Hi! My name is Professor Maggie! As the team lead for this project I worked with Trainer Marcus and Breeder Frankie to bring you this fun Pokemon game to help train you to identify wild Pokemon! If you want to see more work I've done go check out my GitHub here: https://github.com/Maggiejackss</p>
+                    <p>Hi! My name is Professor Maggie! As the team lead for this project I worked with Trainer Marcus and Breeder Frankie to bring you this fun Pokemon game to help train you to identify wild Pokemon! If you want to see more work I've done go check out my GitHub <a href='https://github.com/Maggiejackss'>here</a>! </p>
                 </div>
             
             </div>
             <div id="fracontainer" class="containerabc">
                 <div id="magcontainer1" class="magcontainer1">
-                    <img id="trainer-frankie" class="sprites" src="External Sources/trainer-frankie.png"></img>
                     <p class="paragraph">Trainer Frankie</p>
+                    <img id="trainer-frankie" class="sprites" src="External Sources/trainer-frankie.png"></img>
                 </div>
                 <div id="magcontainer2" class="charintro">Hello, My name is Breeder Frankie! I was responsible for capturing the Pokemon, creating cards and displaying them for you. I hope you enjoy the cards!</div>
             </div>
             <div id="marcontainer" class="containerabc">
                 <div id="magcontainer1" class="magcontainer1">
-                    <img id="bug-marcus" class="sprites" src="External Sources/bug-marcus.png"></img>
                     <p class="paragraph">Bug Catcher Marcus</p>
+                    <img id="bug-marcus" class="sprites" src="External Sources/bug-marcus.png"></img>
                 </div>
                 <div id="magcontainer2" class="charintro">Howdy! My name is Bug Catcher Marcus, and I collaborated with Prof. Maggie and Trainer Frankie to populate these popups, images, and initializing the game after the windows are closed. Although I’m a bug catcher, I actually don’t like bugs. I like programs to work as they should 😊
                     Check out my github page on: https://github.com/mvmanalac
@@ -48,8 +48,11 @@
                 <p>This is Prof. Maggie, Trainer Frankie, and Bug Catcher Marcus. They use Pokemon as a way to practice coding and improve the PokeDex. A PokeDex is like an encyclopedia just for Pokemon!</p>
                 <p>We need your help filling out the PokeDex by identifying Pokemon in the wild. Your very own Pokemon legend is about to unfold. Take courage, and leap into the world of Pokemon where dreams, adventure and friendships await!</p>
             </div>
+            
+        <button id="close" class="close">Close</button>
         </div>
-        <button id="close" onclick="document.getElementById('dadcontainer').style.display='none'">Close</button>
+        
+        <!-- <button id="close" class="close">Close</button> -->
     </div>
     <div id="mainCont" class="hidden">
         <div class="instructionsDiv" id="instructionsDiv">
@@ -66,7 +69,7 @@
 
         <div class="game-container" id="game-container">
             <img src="" alt="" class="fetched-image" id="fetched-image">
-            <div id="question"></div>
+            <div id="question" class="question"></div>
             <!-- <div class="some-words"> -->
 
             <div class="user-input" id="user-input"></div>
