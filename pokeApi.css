@@ -162,3 +162,46 @@ button {
     }
 
 } */
+
+.paragraph {
+    align-self: flex-end;
+    font-family: 'Pokemon Solid', sans-serif;
+}
+
+.dadcontainer {
+    display: flex;
+    flex-direction: row;
+    padding: 300px;
+    border: 2px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.bigcontainer {
+    display: flex;
+    flex-shrink: 1;
+    flex-direction: column;
+    background-color: #fff;
+    border: 2px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.containerabc {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+
+.sprites {
+    width: 200px;
+    height: 320px;
+}
+
+.intro {
+    padding: 0 50px 50px 50px;
+}
+
+.charintro {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
